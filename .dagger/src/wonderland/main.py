@@ -24,12 +24,12 @@ class Wonderland:
     @function
     def get_pre_commit_hook(self) -> dagger.File:
         """Get the pre-commit hook file"""
-        return dag.directory(".").file(".githooks/pre-commit")
+        return dag.host().directory(".").file(".githooks/pre-commit")
 
     @function  
     def get_github_workflows(self) -> dagger.Directory:
         """Get all GitHub workflow files"""
-        return dag.directory(".").directory(".github/workflows")
+        return dag.host().directory(".").directory(".github/workflows")
 
     @function
     def install_githooks(self, target_repo: dagger.Directory) -> dagger.Directory:
